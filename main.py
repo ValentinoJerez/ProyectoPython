@@ -56,3 +56,6 @@ def main():
         elif opcion == "6":
             print("Saliendo del Menu, ¡Gracias!")
             break
+
+if __name__ == "__main__":
+    main()
