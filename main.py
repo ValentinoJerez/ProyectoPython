@@ -40,8 +40,8 @@ crear_base_datos()
 
 def main():
     while True:
-        print(Fore.BLACK + Style.BRIGHT + "Bienvenido al Sistema de Inventario de Productos" + Style.RESET_ALL)
-        print("\nMenu:")
+        print(Style.BRIGHT + "Bienvenido al Sistema de Inventario de Productos" + Style.RESET_ALL)
+        print(Style.BRIGHT + "\nMenu:" + Style.RESET_ALL)
         menu.mostrar_menu()
         opcion = input("Seleccione una opcion: ")
         

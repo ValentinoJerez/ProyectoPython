@@ -1,5 +1,7 @@
 import sqlite3
 
+from colorama import init, Fore, Style, init
+
 DB_NAME = "inventario.db" #Defino Base de datos
 
 def mostrar_productos():
@@ -19,7 +21,7 @@ def mostrar_productos():
         
         #Verifico si hay productos
         if not productos_registrados:
-            print("No hay productos registrados")
+            print(Fore.RED + Style.BRIGHT + "No hay productos registrados")
             return #Salgo de la funcion
             
         #Itero sobre cada producto
@@ -31,10 +33,10 @@ def mostrar_productos():
             cantidad = producto[3]
             precio = producto[4]
             categoria = producto[5]
-            print(f"{producto_id} - {nombre} - {descripcion} - {cantidad} - {precio} - {categoria} ")
+            print(Fore.GREEN + Style.BRIGHT + f"{producto_id} - {nombre} - {descripcion} - {cantidad} - {precio} - {categoria} ")
     
     #Manejo de errores
     except sqlite3.Error as e:
-        print("¡Error! No se puede recuperar los datos.")
+        print(Fore.RED + Style.BRIGHT + "¡Error! No se puede recuperar los datos.")
     finally:
         conexion.close()

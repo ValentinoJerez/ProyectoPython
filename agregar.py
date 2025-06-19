@@ -63,7 +63,7 @@ def agregar_producto():
         cursor.execute(sql_insert, valores)
         conexion.commit() #Guardo los cambios
 
-        print(f"Producto {nombre} agregado con exito ")
+        print(Fore.GREEN + Style.BRIGHT + f"Producto {nombre} agregado con exito " + Style.RESET_ALL)
 
     except sqlite3.Error as e: #Manejo de errores
         print(f"Error al agregar producto: {e}")

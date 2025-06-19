@@ -1,6 +1,9 @@
 import sqlite3
 
+from colorama import init, Fore, Style, init
+
 DB_NAME = "inventario.db" # Defino la base de datos
+
 
 def buscar_productos():
     criterio = ""
@@ -22,7 +25,7 @@ def buscar_productos():
                     valor = f"%{nombre.lower()}%"
                     break
                 else:
-                    print("El nombre del producto no puede estar vacío")
+                    print(Fore.RED + Style.BRIGHT + "El nombre del producto no puede estar vacío" + Style.RESET_ALL)
                     break
         elif opcion == 2:
             criterio = "categoria"
@@ -34,7 +37,7 @@ def buscar_productos():
                     valor = f"%{categoria.lower()}%"
                     break
                 else:
-                    print("La categoria del producto no puede estar vacía")
+                    print(Fore.RED + Style.BRIGHT + "La categoria del producto no puede estar vacía" + Style.RESET_ALL)
                     break
         elif opcion == 3:
             criterio = "id"
@@ -44,12 +47,12 @@ def buscar_productos():
                     if id_input > 0:
                         break
                     else:
-                        print("El ID del producto debe ser un número positivo")
+                        print(Fore.YELLOW + Style.BRIGHT +"El ID del producto debe ser un número positivo" + Style.RESET_ALL)
                 except ValueError:
-                    print("Por favor, ingrese un número válido para el ID del producto")
+                    print(Fore.RED + Style.BRIGHT + "Por favor, ingrese un número válido para el ID del producto" + Style.RESET_ALL)
                     break
                 else:
-                    print("Opción no válida. Por favor, elija 1, 2 o 3.")
+                    print(Fore.RED + Style.BRIGHT + "Opción no válida. Por favor, elija 1, 2 o 3." + Style.RESET_ALL)
                 return
         
         #Conexion con Base de Datos
@@ -72,9 +75,9 @@ def buscar_productos():
 
             #Muestro los resultados
             if not resultados:
-                print("No se encontraron productos que coincidan con su búsqueda.")
+                print(Fore.RED + Style.BRIGHT + "No se encontraron productos que coincidan con su búsqueda.")
             else:
-                print("Productos encontrados:")
+                print(Fore.GREEN + Style.BRIGHT +"Productos encontrados:")
                 #Itero sobre los resultados y muestro cada producto
                 for producto in resultados:
                     #Accedo a los elementos por índice
@@ -88,6 +91,6 @@ def buscar_productos():
 
         #Manejo de errores
         except sqlite3.Error as e:
-            print("¡Error! No se puede recuperar los datos.")
+            print(Fore.RED + Style.BRIGHT + "¡Error! No se puede recuperar los datos.")
         finally:
             conexion.close() 
