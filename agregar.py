@@ -1,5 +1,9 @@
 import sqlite3
 
+from colorama import init, Fore, Style, init
+
+init(autoreset=True)
+
 DB_NAME = "inventario.db" #Defino la base de datos nuevamente
 
 def agregar_producto():
@@ -9,7 +13,7 @@ def agregar_producto():
     while True:
         nombre = input("Ingrese el nombre del producto: ")
         if nombre == "":
-            print("El nombre del producto no puede estar vacío")
+            print(Fore.RED + Style.BRIGHT + "El nombre del producto no puede estar vacío" + Style.RESET_ALL)
         else:
             break
 
@@ -22,7 +26,7 @@ def agregar_producto():
     while True:
         cantidad = input("Ingrese la cantidad del producto: ")
         if cantidad == "":
-            print("La cantidad del producto no puede estar vacía")
+            print(Fore.RED + Style.BRIGHT + "La cantidad del producto no puede estar vacía" + Style.RESET_ALL)
         else:
             break
 
@@ -30,17 +34,17 @@ def agregar_producto():
     while True:
         precio = int(input("Ingrese el precio del producto: ")) #Pido un entero
         if precio == "":
-            print("El precio del producto no puede estar vacío")
+            print(Fore.RED + Style.BRIGHT + "El precio del producto no puede estar vacío" + Style.RESET_ALL)
         elif precio > 0: #Verifico que el precio sea mayor a 0
             break
         else:
-            print("El precio debe ser mayor a 0")
+            print(Fore.YELLOW + Style.BRIGHT + "El precio debe ser mayor a 0")
 
     #Categoria
     while True:
         categoria = input("Ingrese la categoria del producto: ")
         if categoria == "":
-            print("La categoria del producto no puede estar vacía")
+            print(Fore.RED + Style.BRIGHT + "La categoria del producto no puede estar vacía" + Style.RESET_ALL)
         else:
             break
 

@@ -7,6 +7,12 @@ import eliminar
 import buscar
 import actualizar
 
+#Importo Colorama
+from colorama import init, Fore, Style, init
+
+#Inicializo Colorama
+init(autoreset=True)
+
 #Base de Datos
 
 DB_NAME = "inventario.db"
@@ -34,6 +40,7 @@ crear_base_datos()
 
 def main():
     while True:
+        print(Fore.BLACK + Style.BRIGHT + "Bienvenido al Sistema de Inventario de Productos" + Style.RESET_ALL)
         print("\nMenu:")
         menu.mostrar_menu()
         opcion = input("Seleccione una opcion: ")
@@ -56,6 +63,8 @@ def main():
         elif opcion == "6":
             print("Saliendo del Menu, ¡Gracias!")
             break
+        else:
+            print(f"{Fore.RED}Opción inválida. Por favor, seleccione un número del 1 al 6.{Style.RESET_ALL}")
 
 if __name__ == "__main__":
     main()
